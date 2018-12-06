@@ -5,3 +5,7 @@ GIT Command List:
 3 : git commit
 4 : git remote add origin https://github.com/ss2019/18-GIT-Assignment-MEAN.git
 5 : git push -u origin master
+6 : git branch UI ( UI is the branch name)
+7 : git branch Middleware ( Middleware is the branch name )
+8 : git push -u origin branch name ( example UI and Middleware) 
+
