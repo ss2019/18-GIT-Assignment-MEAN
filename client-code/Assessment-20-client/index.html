@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html ng-app="app">
+  <head>
+    <base href="/" />
+    <meta chrset="UTF 8" />
+    <title>Final Assessment</title>
+
+    <script src="js/angular.min.js"></script>
+    <script src="js/angular-route.js"></script>
+    <script src="js/script.js"></script>
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+  </head>
+  <body>
+    <div class="container">
+      <div ng-controller="listDocumentController">
+        <h2>List of Documents</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>No.</th>
+              <th>First Name</th>
+              <th>Type</th>
+              <th>Description</th>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="docList in documentlistData.documentlist">
+              <th>{{ $index + 1 }}</th>
+              <td>{{ docList.fileName }}</td>
+              <td>{{ docList.fileType }}</td>
+              <td>{{ docList.description }}</td>
+              <td>
+                <button type="button" class="btn btn-success">Download</button>
+              </td>
+              <td>
+                <button type="button" class="btn btn-danger">Delete</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div>
+        <h2>Upload New Document</h2>
+        <form
+          class="form-horizontal"
+          action="http://localhost:3000/uploads"
+          method="POST"
+          enctype="multipart/form-data"
+        >
+          <div class="form-group">
+            <label class="control-label col-sm-2">Upload a document:</label>
+            <div class="col-sm-10"><input name="myImage" type="file" /></div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2">Description:</label>
+            <div class="col-sm-10">
+              <input type="text" name="description" />
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button type="submit">Upload</button>
+            </div>
+          </div>
+        </form>
+      </div>
+
+      <div ng-controller="addController">
+        <h2>List of users</h2>
+        <table class="table">
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+              <th>SSOID</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="user in userListData.userlist">
+              <td>{{ user.firstName }}</td>
+              <td>{{ user.lastName }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.SSOID }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div ng-controller="HttpGetController">
+        <form class="form-horizontal">
+          <h2>User Registration Form</h2>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="firstName"
+              >First Name:</label
+            >
+            <div class="col-sm-10">
+              <input
+                type="text"
+                class="form-control"
+                id="firstName"
+                name="firstName"
+                ng-model="firstName"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="lastName"
+              >Last Name:</label
+            >
+            <div class="col-sm-10">
+              <input
+                type="text"
+                id="lastName"
+                class="form-control"
+                name="lastName"
+                ng-model="lastName"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="email"> Email:</label>
+            <div class="col-sm-10">
+              <input
+                type="text"
+                id="email"
+                class="form-control"
+                name="email"
+                ng-model="email"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="control-label col-sm-2" for="SSOID"> SSOID:</label>
+            <div class="col-sm-10">
+              <input
+                type="text"
+                id="SSOID"
+                class="form-control"
+                name="SSOID"
+                ng-model="SSOID"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+              <button
+                type="submit"
+                class="btn btn-primary"
+                ng-click="SendData()"
+              >
+                Submit
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </body>
+</html>
